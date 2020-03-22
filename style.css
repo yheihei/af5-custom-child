@@ -1,0 +1,444 @@
+/*
+Theme Name: AFFINGER5 JET-Child
+Template: affinger5
+Description: WINGver20200107以降 EX対応版
+Version: 20200123
+*/
+
+.home main,
+.archive:not(.author) main {
+	background-color:transparent!important;
+	border:none;
+}
+
+#st-magazine .kanren:not(.st-cardbox) dt {
+	border-radius:0;
+	border:0;
+	box-shadow:none;
+	padding:0;
+}
+
+#st-magazine .kanren:not(.st-cardbox) dt:before{
+	content:none;
+}
+
+#st-magazine .kanren:not(.st-cardbox) dt {
+	border-radius:0;
+	border:0;
+	box-shadow:none;
+	padding:0;
+}
+
+#st-magazine .kanren:not(.st-cardbox) dt:before{
+	content:none;
+}
+
+#st-magazine .kanren .fa {
+	margin-right: 5px;
+}
+
+/*トップの打消し*/
+.home .st-eyecatch,
+.home .entry-title,
+.home h2,
+.home .h2modoki,
+.home h3,
+.home .h3modoki,
+.archive:not(.author) .st-eyecatch,
+.archive:not(.author) .entry-title,
+.archive:not(.author) h2,
+.archive:not(.author) .h2modoki,
+.archive:not(.author) h3,
+.archive:not(.author) .h3modoki{
+	margin-left:0!important;
+	margin-right:0!important;
+	margin-top:0!important;
+}
+
+.home .colum1 #content-w,
+.home .colum1 main,
+.archive:not(.author) .colum1 #content-w,
+.archive:not(.author) .colum1 main{
+    padding-top: 0;
+}
+
+/*トップの基本部分*/
+.home .post {
+	padding-bottom: 0px;
+}
+
+.home main {
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:0px;
+}
+
+aside .kanren {
+	margin-top: 0;
+	margin-bottom:20px;
+	padding-top: 0;
+}
+
+/*メニュー*/
+header .smanone ul.menu li li a{
+  z-index:99999;
+}
+
+/*ブログカード風マガジン*/
+#st-magazine .kanren {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+#st-magazine .kanren dl:last-child {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+
+/*ブログカード風マガジン*/
+#st-magazine:not(.st-magazine-k) .kanren .st-top-box:not(.st-magazine-infeed) dl {
+	box-sizing:border-box;
+	background:#fff;
+}
+
+#st-magazine .kanren dl {
+	width:100%;
+}
+
+#st-magazine .kanren dl p {
+	font-size:75%;
+	line-height:1.8;
+	color:#757575;
+}
+
+#st-magazine .kanren dt {
+	float: none!important;
+	width: 100%!important;
+	height:auto;
+	overflow: hidden;
+	position:relative;
+}
+
+#st-magazine .kanren dt img {
+	width: 100%!important;
+	border-radius:0!important;
+}
+
+#st-magazine .kanren dd {
+	padding: 5px 20px 10px;
+}
+
+#st-magazine .kanren .clearfix dd p {
+	line-height: 1.8;
+}
+
+#st-magazine .kanren .st-top-box {
+	padding:5px 5px 10px;
+	box-sizing:border-box;
+	width:100%;
+}
+
+#st-magazine .kanren .st-top-box dl {
+	margin-bottom:0;
+	position: relative;
+}
+
+#st-magazine .kanren .st-top-box a.st-box-a {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height:100%;
+	width: 100%;
+	z-index:9999;
+}
+
+#st-magazine .kanren .st-top-box a:hover {
+	text-decoration: none;
+	background:#fff;
+	opacity:0.3;
+}
+
+#st-magazine .kanren .st-top-box img.size-full,
+#st-magazine .kanren .st-top-box img.size-large {
+	margin-bottom:0;
+}
+
+/*一覧のカテゴリ*/
+#st-magazine .kanren .st-magazine-cat,
+#st-magazine .kanren .st-magazine-cat a { /*下カテゴリ*/
+	font-size:85%;
+	color:#757575;
+	text-decoration:none;
+	padding-top:5px;
+}
+
+#st-magazine .kanren .st-catgroup { /*上カテゴリ*/
+	position:absolute;
+	top:7px;
+	left:7px;
+}
+
+#st-magazine .kanren .st-catgroup a:hover {
+	background-color:transparent;
+}
+
+/*ブログカード風マガジン最初の投稿*/
+#st-magazine .kanren .st-fist-post {
+	padding:10px 5px 5px;
+	box-sizing:border-box;
+	width:100%!important;
+	height:auto;
+	border:none;
+}
+
+#st-magazine .kanren .st-fist-post .st-top-time p{ /*投稿日*/
+	position:absolute;
+	bottom:0px;
+	right:5px;
+	padding:2px 7px;
+	font-size:90%;
+	color:#fff;
+}
+
+/*WordPress Popular Posts連携*/
+
+.st-wp-views {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index:999;
+	padding:5px 20px;
+	color:#fff;
+	text-align:center;
+	background-color: rgba(0,0,0,0.7);
+	border-radius:5px 0 5px 0;
+}
+
+.st-wp-views-limit { /* リミット数を超えた場合のデザイン */
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index:999;
+	padding:5px 20px;
+	color:#fff;
+	text-align:center;
+	background:#bcb72f!important;
+	border-radius:5px 0 5px 0;
+	font-size:90%;
+}
+
+.wpp-views {
+	font-size:100%;
+}
+.wpp-text{
+	font-size:70%;
+	margin-left:5px;
+}
+
+.st-wp-viewbox .st-wp-views,
+#side .st-wp-views {
+	font-size:80%;
+}
+
+.st-wp-viewbox .st-wp-views .wpp-text,
+#side .st-wp-views .wpp-text {
+	font-size:50%;
+}
+
+/*投稿日*/
+#st-magazine .kanren dl .st-top-time p{
+	position:absolute;
+	bottom:0px;
+	right:5px;
+	padding:2px 7px;
+	font-size:90%;
+	color:#fff;
+	z-index: 999;
+}
+
+/*投稿日下*/
+#st-magazine .kanren .st-top-time-under p{
+	position:absolute;
+	bottom:0;
+	right:5px;
+	padding:2px 7px;
+	font-size:80%;
+	color:#ccc;
+}
+
+@media print, screen and (min-width: 960px) {
+	#st-magazine .kanren .st-fist-post .st-top-time-under p{
+		position:relative;
+		text-align: right;
+		padding:2px 7px;
+		font-size:80%;
+	}
+}
+
+/*カテゴリ*/
+#st-magazine .catname {
+	position:relative;
+	z-index:9999;
+}
+
+/*PickUp*/
+.st-pick {
+  	padding:3px 6px;
+	margin-right:5px;
+	background:#F9A825;
+	color:#fff;
+	font-size:60%;
+  	border-radius:3px;
+    vertical-align:middle;
+}
+
+/*タイトル*/
+#st-magazine .kanren .st-top-box dd h3 {
+	padding:5px 0;
+	line-height:1.5;
+}
+
+/*ブログカード風マガジン（関連記事）*/
+#st-magazine.st-magazine-k .kanren dl {
+	border:none;
+}
+
+#st-magazine.st-magazine-k .kanren dd {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*おすすめ記事*/
+.nowhits .pop-box {
+	margin-top: 0;
+}
+
+/*media Queries タブレットサイズ（960px以下）
+----------------------------------------------------*/
+@media only screen and (max-width: 960px) {
+
+
+/*-- ここまで --*/
+}
+
+/*media Queries タブレットサイズ（600px以上）
+----------------------------------------------------*/
+@media only screen and (min-width: 600px) {
+
+	.home main {
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:0px;
+	}
+
+	#st-magazine .kanren .st-top-box {
+		box-sizing:border-box;
+		padding:5px;
+		width:50%;
+	}
+	
+	/*カテゴリ*/
+	#st-magazine .catname {
+		font-size:13px;
+	}
+
+	/*関連記事*/
+	#st-magazine.st-magazine-k .kanren .st-top-box {
+		width:50%;
+	}
+	.colum1 #st-magazine.st-magazine-k .kanren .st-top-box,
+	.lp #st-magazine.st-magazine-k .kanren .st-top-box {
+		width:33.33%;
+	}
+
+	#st-magazine.st-magazine-k .kanren {
+		margin-left: -5px;
+		margin-right: -5px;
+	}
+
+	/*閲覧数ウィジェット*/
+	aside .kanren.pop-box.st-wpp-views-widgets {
+		margin-top:20px;
+	}
+
+/*-- ここまで --*/
+}
+
+/*media Queries タブレットサイズ（600px～959px）のみで適応したいCSS -タブレットのみ
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+
+	#st-magazine .kanren {
+	    padding: 0 10px;
+	}
+
+}
+
+/*media Queries PCサイズ（960px以上）
+----------------------------------------------------*/
+@media print, screen and (min-width: 960px) {
+	
+	body.archive:not(.author) main {
+		padding:0;
+	}
+
+	.home main {
+		padding-left:0;
+		padding-right:0;
+		padding-bottom:0;
+	}
+
+	#st-magazine .kanren .st-fist-post {
+		padding:0 5px 5px;
+	}
+
+	#st-magazine .kanren .st-top-box {
+		width:49.99%;
+	}
+
+	.colum1 #st-magazine .kanren .st-top-box {
+		width:33.33%;
+	}
+
+	.home aside .kanren {
+		margin-top: 0;
+		padding-top: 0px;
+	}
+
+	.home .colum1 main,
+	.category .colum1 main {
+		margin: 0 0 20px;
+		padding: 0px;
+	}
+
+/*-- ここまで --*/
+}
+
+/*media Queries スマートフォンのみ（599px）以下
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 599px) {
+
+	#st-magazine .kanren .st-fist-post {
+		padding-top: 0;
+	}
+	
+	.home main,
+	.archive:not(.author) main,
+	.home .colum1 main,
+	.archive .colum1 main{
+		padding-top: 10px;
+	}
+
+	#st-magazine:not(.st-magazine-k) .kanren .st-top-box:not(.st-magazine-infeed) dl {
+    	box-sizing: border-box;
+    	background: #fff;
+    	padding-bottom: 10px;
+	}
+/*-- ここまで --*/
+}
