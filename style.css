@@ -442,3 +442,36 @@ header .smanone ul.menu li li a{
 	}
 /*-- ここまで --*/
 }
+
+/* スライドショー改造 */
+.post-slide-text {
+	display: none !important;
+}
+p.post-slide-more {
+	display: none !important;
+}
+.yh-post-slide-title {
+	padding: 15px 10px 30px 10px;
+	text-align: center;
+}
+.yh-post-slide-title__category {
+	font-size: 12px;
+	line-height: 1.2;
+	margin-bottom: 10px;
+}
+.yh-post-slide-title__category > a {
+	text-decoration: none;
+	color: black;
+}
+.yh-post-slide-title__title {
+	font-size: 24px;
+	line-height: 1.2;
+	margin-bottom:0;
+}
+.yh-post-slide-title__title > a {
+	text-decoration: none;
+	color: black;
+}
+div.post-slide-body {
+	background-color: initial !important;
+}
