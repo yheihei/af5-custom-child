@@ -475,3 +475,40 @@ p.post-slide-more {
 div.post-slide-body {
 	background-color: initial !important;
 }
+
+/* 人気記事一覧 */
+.yhei-post {
+	list-style: none;
+}
+.yhei-post > a {
+	display: block;
+	text-decoration: none;
+	color: black;
+}
+.yhei-post__thumbnail {
+	position: relative;
+}
+.yhei-post__thumbnail > .catname {
+	position: absolute;
+	top: -5px;
+	z-index: 9999;
+}
+.yhei-post__thumbnail > .yhei-post__view-counts {
+	position: absolute;
+	right: 0;
+	top: auto;
+	bottom: 0;
+	z-index: 9999;
+}
+.yhei-post__title {
+	text-align: justify;
+}
+.yhei-post__description {
+	padding: 10px 20px;
+	background-color: white;
+}
+.yhei-post__description > p {
+	margin-bottom: 0;
+	text-align: right;
+}
+
