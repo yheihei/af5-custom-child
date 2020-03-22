@@ -109,7 +109,7 @@ function related_post_ids_meta_box_callback( $post ) {
 	echo '<input style="width:100%" id="related_post_ids" name="related_post_ids" value="'. esc_attr( $value ) . '" placeholder="1,3,88">';
 }
 /**
- * When the post is saved, saves our custom data.
+ * 投稿編集画面 関連記事IDの保存
  *
  * @param int $post_id
  */
@@ -152,3 +152,36 @@ function save_related_post_ids_meta_box_data( $post_id ) {
 	update_post_meta( $post_id, '_related_post_ids', $my_data );
 }
 add_action( 'save_post', 'save_related_post_ids_meta_box_data' );
+
+/**
+ * 人気記事一覧の出力カスタマイズ
+ * この機能を使うには WordPress Popular Posts プラグインをインストールする必要あり
+ * @see https://ja.wordpress.org/plugins/wordpress-popular-posts/
+ */
+function custom_wpp_html_list( $popular_posts, $instance ){
+	$output = '';
+	foreach( $popular_posts as $index => $popular_post ) {
+		$ranking_number = $index+1;
+		$permalink = get_permalink( $popular_post->id );
+		$image_url = get_the_post_thumbnail_url( $popular_post->id );
+		if( !$image_url ) {
+			$image_url = get_stylesheet_directory_uri() . "/images/no-img.png";
+		}
+		$output .= '<li class="yhei-post">';
+		$output .= "<a href='$permalink' >";
+		$output .= <<<EOF
+<div class='yhei-post__thumbnail'>
+		<span class="catname">$ranking_number</span>
+		<span class="catname yhei-post__view-counts">$popular_post->pageviews views</span>
+		<img width="800" height="640" src="$image_url" class="wp-post-image yhei-post__eyecatch" alt="$popular_post->title" />
+</div>
+<div class='yhei-post__description'>
+	<h3 class="yhei-post__title">$popular_post->title</h3>
+</div>
+EOF;
+		$output .= '</a>';
+		$output .= '</li>';
+	}
+	return $output;
+}
+add_filter( 'wpp_custom_html', 'custom_wpp_html_list', 10, 3 );
