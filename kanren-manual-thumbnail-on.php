@@ -1,13 +1,11 @@
 <?php
 
-$manual_related_post_ids = get_post_meta( get_the_ID(), '_related_post_ids', true );
-if ( $manual_related_post_ids ) {
-	// 投稿ページからの関連記事入れ込みがあった場合 こちらを優先
-	get_template_part( 'kanren-manual-thumbnail-on' );
-	return;
-}
-
-$query   = isset( $query ) ? $query : $GLOBALS['wp_query'];
+$manual_related_post_id_string = get_post_meta( get_the_ID(), '_related_post_ids', true );
+$manual_related_post_ids = explode( ",", $manual_related_post_id_string );
+$args = array(
+	'post__in' => $manual_related_post_ids
+);
+$query = new WP_Query( $args );
 $classes = isset( $classes ) ? $classes : array();
 
 $uuid = wp_generate_uuid4();

@@ -88,3 +88,67 @@ if( trim($GLOBALS['st_child_jet_data8']) === '' ): /*有効化するかどうか
 	add_filter( 'theme_mod_st_menu100', function () { return 'yes'; } );   // PCメニュー100%
 endif;
 //自動設定ここまで
+
+/**
+ * 投稿編集画面に関連記事IDの入力Formを追加
+ */
+function related_post_ids_meta_box() {
+	add_meta_box(
+		'related-post-ids',
+		'関連記事ID(カンマ区切りで入力)',
+		'related_post_ids_meta_box_callback',
+		'post',
+		'side'
+	);
+}
+add_action( 'add_meta_boxes', 'related_post_ids_meta_box' );
+function related_post_ids_meta_box_callback( $post ) {
+	// Add a nonce field so we can check for it later.
+	wp_nonce_field( 'related_post_ids_nonce', 'related_post_ids_nonce' );
+	$value = get_post_meta( $post->ID, '_related_post_ids', true );
+	echo '<input style="width:100%" id="related_post_ids" name="related_post_ids" value="'. esc_attr( $value ) . '" placeholder="1,3,88">';
+}
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id
+ */
+function save_related_post_ids_meta_box_data( $post_id ) {
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['related_post_ids_nonce'] ) ) {
+		return;
+	}
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['related_post_ids_nonce'], 'related_post_ids_nonce' ) ) {
+		return;
+	}
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+	// Check the user's permissions.
+	if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+		if ( ! current_user_can( 'edit_page', $post_id ) ) {
+				return;
+		}
+	}
+	else {
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+				return;
+		}
+	}
+
+	/* OK, it's safe for us to save the data now. */
+	// Make sure that it is set.
+	if ( ! isset( $_POST['related_post_ids'] ) ) {
+		return;
+	}
+	// Sanitize user input.
+	$my_data = sanitize_text_field( $_POST['related_post_ids'] );
+
+	// 空白除去
+	$my_data  = preg_replace("/( |　)/", "", $my_data );
+	// Update the meta field in the database.
+	update_post_meta( $post_id, '_related_post_ids', $my_data );
+}
+add_action( 'save_post', 'save_related_post_ids_meta_box_data' );
