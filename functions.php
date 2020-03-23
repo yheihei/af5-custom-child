@@ -185,3 +185,40 @@ EOF;
 	return $output;
 }
 add_filter( 'wpp_custom_html', 'custom_wpp_html_list', 10, 3 );
+
+/**
+ * 固定ページ2作成(下書き用のカスタム投稿タイプ)
+ */
+// 固定ページ2の表示が404になる場合下記を首開け(1度だけで良い)
+// global $wp_rewrite;
+// $wp_rewrite->flush_rules();
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+	register_post_type(
+		'pagedraft', // 投稿タイプ名の定義
+		array(
+			'labels' => array(
+				'name' => __( '固定ページ2(下書き用)' ), // 表示する投稿タイプ名
+				'singular_name' => __( 'pagedraft' )
+			),
+			'public' => true,
+			'menu_position' =>20,
+			// アイキャッチ追加
+			'supports' => array('title','editor','thumbnail'),
+		)
+	);
+}
+add_filter('post_class', 'set_pagedraft_class', 10,3);
+function set_pagedraft_class($classes, $class, $post_id){
+	if ('pagedraft' === get_post_type()) {
+		// 固定ページ2の場合、通常の投稿と同じclassをつける
+		$classes[] = "post";
+		$classes[] = "type-post";
+		$classes[] = "format-standard";
+		$classes[] = "has-post-thumbnail";
+		$classes[] = "category-brand";
+		$classes[] = "tag-24";
+		return $classes;
+	}
+	return $classes;
+}
