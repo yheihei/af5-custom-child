@@ -444,6 +444,10 @@ header .smanone ul.menu li li a{
 }
 
 /* スライドショー改造 */
+.slick-prev,
+.slick-next {
+	top:42%;
+}
 .post-slide-text {
 	display: none !important;
 }
