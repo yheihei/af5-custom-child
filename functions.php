@@ -167,15 +167,15 @@ function custom_wpp_html_list( $popular_posts, $instance ){
 		if( !$image_url ) {
 			$image_url = get_stylesheet_directory_uri() . "/images/no-img.png";
 		}
-		$output .= '<li class="yhei-post">';
+		$output .= '<li class="yhei-popular-post">';
 		$output .= "<a href='$permalink' >";
 		$output .= <<<EOF
-<div class='yhei-post__thumbnail'>
+<div class='yhei-popular-post__thumbnail'>
 		<span class="catname">$ranking_number</span>
-		<img src="$image_url" class="wp-post-image yhei-post__eyecatch" alt="$popular_post->title" />
-		<div class='yhei-post__description'>
-			<h3 class="yhei-post__title">$popular_post->title</h3>
-			<span class="yhei-post__view-counts">$popular_post->pageviews views</span>
+		<img src="$image_url" class="wp-post-image yhei-popular-post__eyecatch" alt="$popular_post->title" />
+		<div class='yhei-popular-post__description'>
+			<h3 class="yhei-popular-post__title">$popular_post->title</h3>
+			<span class="yhei-popular-post__view-counts">$popular_post->pageviews views</span>
 		</div>
 </div>
 EOF;
