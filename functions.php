@@ -159,7 +159,7 @@ add_action( 'save_post', 'save_related_post_ids_meta_box_data' );
  * @see https://ja.wordpress.org/plugins/wordpress-popular-posts/
  */
 function custom_wpp_html_list( $popular_posts, $instance ){
-	$output = '';
+	$output = '<ul class="yhei-popular-posts">';
 	foreach( $popular_posts as $index => $popular_post ) {
 		$ranking_number = $index+1;
 		$permalink = get_permalink( $popular_post->id );
@@ -167,21 +167,22 @@ function custom_wpp_html_list( $popular_posts, $instance ){
 		if( !$image_url ) {
 			$image_url = get_stylesheet_directory_uri() . "/images/no-img.png";
 		}
-		$output .= '<li class="yhei-post">';
+		$output .= '<li class="yhei-popular-post">';
 		$output .= "<a href='$permalink' >";
 		$output .= <<<EOF
-<div class='yhei-post__thumbnail'>
+<div class='yhei-popular-post__thumbnail'>
 		<span class="catname">$ranking_number</span>
-		<span class="catname yhei-post__view-counts">$popular_post->pageviews views</span>
-		<img width="800" height="640" src="$image_url" class="wp-post-image yhei-post__eyecatch" alt="$popular_post->title" />
-</div>
-<div class='yhei-post__description'>
-	<h3 class="yhei-post__title">$popular_post->title</h3>
+		<img src="$image_url" class="wp-post-image yhei-popular-post__eyecatch" alt="$popular_post->title" />
+		<div class='yhei-popular-post__description'>
+			<h3 class="yhei-popular-post__title">$popular_post->title</h3>
+			<span class="yhei-popular-post__view-counts">$popular_post->pageviews views</span>
+		</div>
 </div>
 EOF;
 		$output .= '</a>';
 		$output .= '</li>';
 	}
+	$output .= '</ul>';
 	return $output;
 }
 add_filter( 'wpp_custom_html', 'custom_wpp_html_list', 10, 3 );
