@@ -1,12 +1,14 @@
 <?php if(!is_front_page() && !is_archive()): //TOPページとアーカイブ以外
 	include(TEMPLATEPATH . '/itiran-thumbnail-on.php');
 else: ?>
-<!-- ピックアップタグをつけた記事を一覧表示 -->
-<div id="st-magazine" class="clearfix">
-<div class="kanren">
-	<?php get_template_part( 'itiran-recommend-list' ); ?>
-</div>
-</div>
+<?php if( is_home() && !is_paged() ) : // トップページ(1ページ目)のみ表示 ?>
+	<!-- ピックアップタグをつけた記事を一覧表示 -->
+	<div id="st-magazine" class="clearfix">
+	<div class="kanren">
+		<?php get_template_part( 'itiran-recommend-list' ); ?>
+	</div>
+	</div>
+<?php endif; ?>
 
 <?php
 $st_is_ex    = st_is_ver_ex();
