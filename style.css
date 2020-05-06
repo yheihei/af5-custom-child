@@ -480,6 +480,10 @@ div.post-slide-body {
 	background-color: initial !important;
 }
 
+.header-post-slider .post-slide.has-image .post-slide-image img {
+	height: auto;
+}
+
 /* 人気記事一覧 */
 .yhei-popular-posts {
 	background-color: white;
