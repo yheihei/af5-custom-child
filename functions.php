@@ -102,6 +102,20 @@ function related_post_ids_meta_box() {
 	);
 }
 add_action( 'add_meta_boxes', 'related_post_ids_meta_box' );
+if ( ! function_exists( 'is_yhei_related_post_ids_meta' ) ) {
+	/**
+	 * 記事固有の関連記事が存在するか
+	 *
+	 * @param int $post_id 記事ID.
+	 * @return bool
+	 */
+	function is_yhei_related_post_ids_meta( $post_id ) {
+		if ( get_post_meta( $post_id, '_related_post_ids', true ) ) {
+			return true;
+		}
+		return false;
+	}
+}
 function related_post_ids_meta_box_callback( $post ) {
 	// Add a nonce field so we can check for it later.
 	wp_nonce_field( 'related_post_ids_nonce', 'related_post_ids_nonce' );
